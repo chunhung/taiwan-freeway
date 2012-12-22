@@ -59,6 +59,16 @@ span.area{
 }
 
 .map{
+  position:relative;
   padding-left:70px;
+  padding-right:70px;
   top-border: 100px;
+}
+
+.iframe-incident{
+  display:none;
+}
+
+.table-incident{
+  position:center;
 }

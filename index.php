@@ -10,9 +10,10 @@
 ?>
 
 <html>
-<head>
-    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<head >
+  <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="./freeway.css" />
+  <!--<script src='./freeway.js' type='text/javascript'></script>-->
   <title>高速公路</title>
 </head>
 <body>
@@ -30,9 +31,13 @@
   <div id="map" class="map">
     <img id='freeway'></img>
   </div>
+  <div id="incident" class="event">
+    <table id="table-incident" class="event">
+    </table>
+  </div>
 </div>
+<iframe id='iframe-incident' class='iframe-incident' src='incident.php' onload='showIncidents()'>
+</iframe>
 </body>
-
 <script src='./freeway.js' type='text/javascript'></script>
-
 </html>

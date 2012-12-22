@@ -8,6 +8,11 @@
     window.onload = map_url(cur_area);
   }
 
+  function showIncidents() {
+    var incident = document.getElementById('iframe-incident').contentDocument.getElementById('incident');
+    document.getElementById('table-incident').innerHTML = incident.innerHTML;
+  }
+
   function map_url(area) {
     cur_area = area;
     var d = new Date();
@@ -74,3 +79,4 @@
     document.getElementById('small').addEventListener("click", function(){change_size('-');}, false);
     document.getElementById('large').addEventListener("click", function(){change_size('+');}, false);
   }
+
