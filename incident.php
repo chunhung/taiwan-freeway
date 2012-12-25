@@ -9,8 +9,44 @@
         CURLOPT_RETURNTRANSFER=>true);
     curl_setopt_array($ch, $curl_opt);
     $body = curl_exec($ch);
-    $body = preg_replace("/<img[^>]+>/i", "", $body);
-    //$body = mb_ereg_replace('國道一號', "<span clas='free1'>國道一號</span>", $body);
+    $body = preg_replace("/<img[^>]+>/i", "", $body); //Remove image link
+    $body = preg_replace("/<input class=\"inc_type\"[^>]+>/i", "", $body); //Remove incident type with hidden property
+    $body = preg_replace('/<!--(.*)-->/Uis', '', $body); //Remove html comments
+    $encoding = mb_detect_encoding($body);
+    mb_internal_encoding($encoding);
+    mb_regex_encoding($encoding);
+    $to_str = array(
+        '南向' => '<span class="to_south">南向</span>',
+        '北向' => '<span class="to_north">北向</span>',
+        '東向' => '<span class="to_east">東向</span>',
+        '西向' => '<span class="to_west">西向</span>');
+    $free_str = array(
+        '國道1號' => '<span clas="free_1">國道1號</span>',);
+    $inc_str = array(
+        '出口匝道壅塞' => '<span class="inc_exit">出口匝道壅塞</span>',
+        '施工' => '<span class="inc_work">施工</span>',
+        '散落物' => '<span class="inc_items">散落物</span>',
+        '壅塞' => '<span class="inc_crowd">壅塞</span>');
+    $fast_str = array(
+        '汐五高架' => '<span class="fast_sw">汐五高架</span>',
+        '快速公路74號' => '<span class="fast_74">快速公路74號</span>',
+        '快速公路88號' => '<span class="fast_88">快速公路88號</span>');
+
+    $replace_array = array(
+        'to' => $to_str,
+        'road' => array_merge($free_str, $fast_str),
+        'inc' => $inc_str);
+
+    foreach ($replace_array as $key => $replace_str) {
+        foreach ($replace_str as $str => $replace) {
+            mb_ereg_search_init($body);
+            if ( mb_ereg_search($str) ) {
+                $body = mb_ereg_replace($str, $replace, $body);
+            } else {
+                unset($replace_array[$key][$str]);
+            }
+        }
+    }
     echo $body;
         
     /*
@@ -25,3 +61,18 @@
     echo $doc->saveHTML();*/
 ?>
 </table>
+<?php 
+    foreach ( $replace_array as $type => $name ) {
+        echo '<select id="select_'.$type.'" css="select_'.$type.'">';
+        echo '<option value="全部">全部</option>';
+        foreach ( $name as $key => $value ) {
+            echo '<option value="'.$key.'">';
+            echo $key;
+            echo '</option>';
+        }
+        echo '</select>';
+    }
+    echo '<button id="button_search" name="button_search" value="尋找" />尋找</button>';
+    echo '<button id="button_reset" name="button_reset" value="重設" />重設</button>';
+?>
+

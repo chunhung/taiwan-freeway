@@ -31,6 +31,8 @@
   <div id="map" class="map">
     <img id='freeway'></img>
   </div>
+  <div id="select" class="select">
+  </div>
   <div id="incident" class="event">
     <table id="table-incident" class="event">
     </table>

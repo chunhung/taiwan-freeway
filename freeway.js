@@ -10,7 +10,18 @@
 
   function showIncidents() {
     var incident = document.getElementById('iframe-incident').contentDocument.getElementById('incident');
+    var select = document.getElementById('iframe-incident').contentDocument.getElementsByTagName('select');
+    var button = document.getElementById('iframe-incident').contentDocument.getElementsByTagName('button');
     document.getElementById('table-incident').innerHTML = incident.innerHTML;
+    num_select = select.length;
+    num_button = button.length;
+
+    for ( var i = 0; i < num_select; i++ ) {
+        document.getElementById('select').appendChild(select[0]);
+    }
+    for ( var i = 0; i < num_button; i++) {
+        document.getElementById('select').appendChild(button[0]);
+    }
   }
 
   function map_url(area) {
