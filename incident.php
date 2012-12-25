@@ -21,16 +21,16 @@
         '東向' => '<span class="東向">東向</span>',
         '西向' => '<span class="西向">西向</span>');
     $free_str = array(
-        '國道1號' => '<span clas="國道1號" name="incident_info">國道1號</span>',
-        '國道2號' => '<span clas="國道2號" name="incident_info">國道2號</span>',
-        '國道3號' => '<span clas="國道3號" name="incident_info">國道3號</span>',
-        '國道4號' => '<span clas="國道4號" name="incident_info">國道4號</span>',
-        '國道5號' => '<span clas="國道5號" name="incident_info">國道5號</span>',
-        '國道6號' => '<span clas="國道6號" name="incident_info">國道6號</span>',
-        '國道7號' => '<span clas="國道7號" name="incident_info">國道7號</span>',
-        '國道8號' => '<span clas="國道8號" name="incident_info">國道8號</span>',
-        '國道9號' => '<span clas="國道9號" name="incident_info">國道9號</span>',
-        '國道10號' => '<span clas="國道10號" name="incident_info">國道10號</span>',);
+        '國道1號' => '<span class="國道1號" name="incident_info">國道1號</span>',
+        '國道2號' => '<span class="國道2號" name="incident_info">國道2號</span>',
+        '國道3號' => '<span class="國道3號" name="incident_info">國道3號</span>',
+        '國道4號' => '<span class="國道4號" name="incident_info">國道4號</span>',
+        '國道5號' => '<span class="國道5號" name="incident_info">國道5號</span>',
+        '國道6號' => '<span class="國道6號" name="incident_info">國道6號</span>',
+        '國道7號' => '<span class="國道7號" name="incident_info">國道7號</span>',
+        '國道8號' => '<span class="國道8號" name="incident_info">國道8號</span>',
+        '國道9號' => '<span class="國道9號" name="incident_info">國道9號</span>',
+        '國道10號' => '<span class="國道10號" name="incident_info">國道10號</span>',);
     $inc_str = array(
         '出口匝道壅塞' => '<span class="出口匝道壅塞">出口匝道壅塞</span>',
         '施工' => '<span class="施工">施工</span>',
