@@ -16,30 +16,30 @@
     mb_internal_encoding($encoding);
     mb_regex_encoding($encoding);
     $to_str = array(
-        '南向' => '<span class="南向">南向</span>',
-        '北向' => '<span class="北向">北向</span>',
-        '東向' => '<span class="東向">東向</span>',
-        '西向' => '<span class="西向">西向</span>');
+        '南向' => '<span class="南向" name="to">南向</span>',
+        '北向' => '<span class="北向" name="to">北向</span>',
+        '東向' => '<span class="東向" name="to">東向</span>',
+        '西向' => '<span class="西向" name="to">西向</span>');
     $free_str = array(
-        '國道1號' => '<span class="國道1號" name="incident_info">國道1號</span>',
-        '國道2號' => '<span class="國道2號" name="incident_info">國道2號</span>',
-        '國道3號' => '<span class="國道3號" name="incident_info">國道3號</span>',
-        '國道4號' => '<span class="國道4號" name="incident_info">國道4號</span>',
-        '國道5號' => '<span class="國道5號" name="incident_info">國道5號</span>',
-        '國道6號' => '<span class="國道6號" name="incident_info">國道6號</span>',
-        '國道7號' => '<span class="國道7號" name="incident_info">國道7號</span>',
-        '國道8號' => '<span class="國道8號" name="incident_info">國道8號</span>',
-        '國道9號' => '<span class="國道9號" name="incident_info">國道9號</span>',
-        '國道10號' => '<span class="國道10號" name="incident_info">國道10號</span>',);
+        '國道1號' => '<span class="國道1號" name="road">國道1號</span>',
+        '國道2號' => '<span class="國道2號" name="road">國道2號</span>',
+        '國道3號' => '<span class="國道3號" name="road">國道3號</span>',
+        '國道4號' => '<span class="國道4號" name="road">國道4號</span>',
+        '國道5號' => '<span class="國道5號" name="road">國道5號</span>',
+        '國道6號' => '<span class="國道6號" name="road">國道6號</span>',
+        '國道7號' => '<span class="國道7號" name="road">國道7號</span>',
+        '國道8號' => '<span class="國道8號" name="road">國道8號</span>',
+        '國道9號' => '<span class="國道9號" name="road">國道9號</span>',
+        '國道10號' => '<span class="國道10號" name="road">國道10號</span>',);
     $inc_str = array(
-        '出口匝道壅塞' => '<span class="出口匝道壅塞">出口匝道壅塞</span>',
-        '施工' => '<span class="施工">施工</span>',
-        '散落物' => '<span class="散落物">散落物</span>',
-        '>壅塞<' => '><span class="壅塞">壅塞</span><');
+        '出口匝道壅塞' => '<span class="出口匝道壅塞" name="inc">出口匝道壅塞</span>',
+        '施工' => '<span class="施工" name="inc">施工</span>',
+        '散落物' => '<span class="散落物" name="inc">散落物</span>',
+        '>壅塞<' => '><span class="壅塞" name="inc">壅塞</span><');
     $fast_str = array(
-        '汐五高架' => '<span class="汐五高架" name="incident_info">汐五高架</span>',
-        '快速公路74號' => '<span class="快速公路74號" name="incident_info">快速公路74號</span>',
-        '快速公路88號' => '<span class="快速公路88號" name="incident_info">快速公路88號</span>');
+        '汐五高架' => '<span class="汐五高架" name="road">汐五高架</span>',
+        '快速公路74號' => '<span class="快速公路74號" name="road">快速公路74號</span>',
+        '快速公路88號' => '<span class="快速公路88號" name="road">快速公路88號</span>');
 
     $replace_array = array(
         'to' => $to_str,

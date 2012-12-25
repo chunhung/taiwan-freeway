@@ -23,6 +23,10 @@
             document.getElementById('select').appendChild(button[0]);
         }
         show('reset');
+        if ( document.body.addEventListener ) {
+            document.getElementById('button_reset').addEventListener("click", function(){show('reset');}, false);
+            document.getElementById('button_search').addEventListener("click", function(){show('filter');}, false);
+        }
     }
 
     function map_url(area) {
@@ -89,16 +93,20 @@
             for ( var i = 0; i < tr.length; i++ ) {
                 if ( tr[i].hasAttribute('class') ) {
                     var tr_class = tr[i].getAttribute('class');
-                        if ( tr_class.contains('hide') ) {
+                    if ( tr_class.indexOf('hide') > -1 ) {
                         tr_class = tr_class.replace('hide', 'show');
-                    } else if ( !tr_class.contains('show') ) {
+                    } else if ( tr_class.indexOf('show') == -1 ) {
                         tr_class = tr_class + ' show';
                     }
                         tr[i].setAttribute('class', tr_class);
                 } else {
                     tr[i].setAttribute('class', 'show');
                 }
-          }
+            }
+            document.getElementById('select_to').value='全部';
+            document.getElementById('select_road').value='全部';
+            document.getElementById('select_inc').value='全部';
+            document.getElementById('button_search').disabled = false;
         } else if ( type == 'filter' ){
             var to = document.getElementById('select_to').value;
             var road = document.getElementById('select_road').value;
@@ -109,17 +117,19 @@
             for ( var i = 0; i < tr.length; i++ ) {
                 var status = 'show';
                 var spans = tr[i].getElementsByTagName('span');
-                for ( var j = 0; j < span.length; j++ ) {
+                for ( var j = 0; j < spans.length; j++ ) {
                     var span_class = spans[j].getAttribute('class');
-                    if ( to != '全部' && status == 'show' )
+                    var span_name = spans[j].getAttribute('Name');
+                    if ( to != '全部' && span_name == 'to' && status == 'show' )
                         status = ( span_class == to )?'show':'hide';
-                    if ( road != '全部' && status == 'show' )
+                    if ( road != '全部' && span_name == 'road' && status == 'show' )
                         status = ( span_class == road )?'show':'hide';
-                    if ( inc != '全部' && status == 'show' )
+                    if ( inc != '全部' && span_name == 'inc' && status == 'show' )
                         status = ( span_class == inc )?'show':'hide';
-                    tr.setAttribute('class', status);
+                    tr[i].setAttribute('class', status);
                 }
             }
+            document.getElementById('button_search').disabled = true;
         }
     }
 
@@ -131,7 +141,5 @@
         document.getElementById('position').addEventListener("click", change_position, false);
         document.getElementById('small').addEventListener("click", function(){change_size('-');}, false);
         document.getElementById('large').addEventListener("click", function(){change_size('+');}, false);
-        document.getElementById('button_search').addEventListener("click", show('filter'), false);
-        document.getElementById('button_reset').addEventListener("click", show('reset'), false);
     }
 
