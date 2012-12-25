@@ -35,7 +35,7 @@
         '出口匝道壅塞' => '<span class="出口匝道壅塞">出口匝道壅塞</span>',
         '施工' => '<span class="施工">施工</span>',
         '散落物' => '<span class="散落物">散落物</span>',
-        '壅塞' => '<span class="壅塞">壅塞</span>');
+        '>壅塞<' => '><span class="壅塞">壅塞</span><');
     $fast_str = array(
         '汐五高架' => '<span class="汐五高架" name="incident_info">汐五高架</span>',
         '快速公路74號' => '<span class="快速公路74號" name="incident_info">快速公路74號</span>',

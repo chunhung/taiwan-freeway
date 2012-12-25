@@ -99,6 +99,19 @@
           tr[i].setAttribute('class', 'show');
         }
       }
+    } else if ( type == 'filter' ){
+      var to = document.getElementById('select_to').value;
+      var road = document.getElementById('select_road').value;
+      var inc = document.getElementById('select_inc').value;
+      if ( to != '全部' ) {
+      
+      }
+      if ( road != '全部' ) {
+      
+      }
+      if ( inc != '全部' ) {
+      
+      }
     }
   }
 
