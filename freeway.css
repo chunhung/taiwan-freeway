@@ -72,3 +72,11 @@ span.area{
 .table-incident{
   position:center;
 }
+
+.show{
+  display:block;
+}
+
+.hide{
+  display:none;
+}

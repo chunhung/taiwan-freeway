@@ -22,6 +22,7 @@
     for ( var i = 0; i < num_button; i++) {
         document.getElementById('select').appendChild(button[0]);
     }
+    show('reset');
   }
 
   function map_url(area) {
@@ -81,6 +82,26 @@
     }
   }
 
+  function show(type) {
+    if ( type == 'reset' ) {
+      var tbody = document.getElementsByTagName('tbody');
+      var tr = tbody[0].getElementsByTagName('tr');
+      for ( var i = 0; i < tr.length; i++ ) {
+        if ( tr[i].hasAttribute('class') ) {
+          var tr_class = tr[i].getAttribute('class');
+          if ( tr_class.contains('hide') ) {
+            tr_class = tr_class.replace('hide', 'show');
+          } else if ( !tr_class.contains('show') ) {
+            tr_class = tr_class + ' show';
+          }
+          tr[i].setAttribute('class', tr_class);
+        } else {
+          tr[i].setAttribute('class', 'show');
+        }
+      }
+    }
+  }
+
   if ( document.body.addEventListener ) {
     document.getElementById('n').addEventListener("click", function(){map_url(this.id)}, false);
     document.getElementById('c').addEventListener("click", function(){map_url(this.id)}, false);
@@ -89,5 +110,7 @@
     document.getElementById('position').addEventListener("click", change_position, false);
     document.getElementById('small').addEventListener("click", function(){change_size('-');}, false);
     document.getElementById('large').addEventListener("click", function(){change_size('+');}, false);
+    document.getElementById('button_search').addEventListener("click", show('filter'), false);
+    document.getElementById('button_reset').addEventListener("click", show('reset'), false);
   }
 
