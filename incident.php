@@ -9,7 +9,10 @@
         CURLOPT_RETURNTRANSFER=>true);
     curl_setopt_array($ch, $curl_opt);
     $body = curl_exec($ch);
-    echo preg_replace("/<img[^>]+>/i", "", $body);
+    $body = preg_replace("/<img[^>]+>/i", "", $body);
+    //$body = mb_ereg_replace('國道一號', "<span clas='free1'>國道一號</span>", $body);
+    echo $body;
+        
     /*
     $doc = new DOMDocument('1.0', 'utf-8');
     $doc->preserveWhiteSpace = false;
