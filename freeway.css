@@ -80,3 +80,21 @@ span.area{
 .hide{
   display:none;
 }
+
+span.road{
+  text-align:center;
+  display:block;
+  background-color:#c0c0aa;
+}
+
+span.to{
+  text-align:center;
+  display:block;
+  background-color:#aac0c0;
+}
+
+span.inc{
+  text-align:center;
+  display:block;
+  background-color:#c0aac0;
+}

@@ -26,9 +26,9 @@
         if ( document.body.addEventListener ) {
             document.getElementById('button_reset').addEventListener("click", function(){show('reset', null);}, false);
             document.getElementById('button_search').addEventListener("click", function(){show('filter', null);}, false);
-            var to = document.getElementsByName('to');
-            var road = document.getElementsByName('road');
-            var inc = document.getElementsByName('inc');
+            var to = document.getElementsByClassName('to');
+            var road = document.getElementsByClassName('road');
+            var inc = document.getElementsByClassName('inc');
             for(var i = 0; i < to.length; i++) {
                 to[i].addEventListener("click", function(click){show('filter', click)}, false);
             }
@@ -108,12 +108,12 @@
             for ( var j = 0; j < spans.length; j++ ) {
                 var span_class = spans[j].getAttribute('class');
                 var span_name = spans[j].getAttribute('Name');
-                if ( to != '全部' && span_name == 'to' && status == 'show' )
-                    status = ( span_class == to )?'show':'hide';
-                if ( road != '全部' && span_name == 'road' && status == 'show' )
-                    status = ( span_class == road )?'show':'hide';
-                if ( inc != '全部' && span_name == 'inc' && status == 'show' )
-                    status = ( span_class == inc )?'show':'hide';
+                if ( to != '全部' && span_class == 'to' && status == 'show' )
+                    status = ( span_name == to )?'show':'hide';
+                if ( road != '全部' && span_class == 'road' && status == 'show' )
+                    status = ( span_name == road )?'show':'hide';
+                if ( inc != '全部' && span_class == 'inc' && status == 'show' )
+                    status = ( span_name == inc )?'show':'hide';
                 tr[i].setAttribute('class', status);
             }
         }
@@ -136,8 +136,8 @@
             filter['inc'] = document.getElementById('select_inc').value;
 
             if ( click != null ) {
-                filter[ click.srcElement.getAttribute('name') ] = click.srcElement.getAttribute('class');
-                document.getElementById('select_'+click.srcElement.getAttribute('name')).value=click.srcElement.getAttribute('class');
+                filter[ click.srcElement.getAttribute('class') ] = click.srcElement.getAttribute('name');
+                document.getElementById('select_'+click.srcElement.getAttribute('class')).value=click.srcElement.getAttribute('name');
             }
 
             change_incident_display(filter['to'], filter['road'], filter['inc']);

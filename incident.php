@@ -20,23 +20,23 @@
     preg_match_all('/<a>(.*?)<\/a>/s', $body, $matches);
     foreach ($matches[1] as $match) {
         if ( !isset($free_str[$match]) )
-            $road_str[$match] = '<span class="'.$match.'" name="road">'.$match.'</span>';
+            $road_str[$match] = '<span name="'.$match.'" class="road">'.$match.'</span>';
     }
 
     preg_match_all('/<td class="inc_info body_right">(.*?)<\/td>/s', $body, $matches);
     foreach ($matches[1] as $match) {
         if ( !isset($inc_str[$match]) )
-            $inc_str[$match] = '<span class="'.$match.'" name="inc">'.$match.'</span>';
+            $inc_str[$match] = '<span name="'.$match.'" class="inc">'.$match.'</span>';
         $origin = '<td class="inc_info body_right">'.$match.'</td>';
         if ( !isset($inc_replace_str[$origin]) )
-            $inc_replace_str[$origin] = '<td class="inc_info body_right"><span class="'.$match.'" name="inc">'.$match.'</span></td>';
+            $inc_replace_str[$origin] = '<td class="inc_info body_right"><span name="'.$match.'" class="inc">'.$match.'</span></td>';
     }
 
     $to_str = array(
-        '南向' => '<span class="南向" name="to">南向</span>',
-        '北向' => '<span class="北向" name="to">北向</span>',
-        '東向' => '<span class="東向" name="to">東向</span>',
-        '西向' => '<span class="西向" name="to">西向</span>');
+        '南向' => '<span name="南向" class="to">南向</span>',
+        '北向' => '<span name="北向" class="to">北向</span>',
+        '東向' => '<span name="東向" class="to">東向</span>',
+        '西向' => '<span name="西向" class="to">西向</span>');
     /*$free_str = array(
         '國道1號' => '<span class="國道1號" name="road">國道1號</span>',
         '國道2號' => '<span class="國道2號" name="road">國道2號</span>',
