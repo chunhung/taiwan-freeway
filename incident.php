@@ -1,6 +1,16 @@
 <?php header('Content-Type: text/html; charset=utf-8');?>
 <table id='incident'>
+    <tbody>
 <?php
+    $ago = array(
+        '300' => '5分鐘前',
+        '600' => '10分鐘前',
+        '1800' => '半小時前',
+        '3600' => '1小時前',
+        '7200' => '2小時前',
+        '14400' => '4小時前',
+        '28800' => '8小時前',
+        '-1' => '很久以前');
     $ch = curl_init();
     $curl_opt = array(
         CURLOPT_URL=>'http://1968.freeway.gov.tw/incident/getallincs',
@@ -32,37 +42,34 @@
             $inc_replace_str[$origin] = '<td class="inc_info body_right"><span name="'.$match.'" class="inc">'.$match.'</span></td>';
     }
 
+    preg_match_all('/<td class="inc_time inc_body">(.*?)<\/td>/s', $body, $matches);
+    $cur_time = strftime('%Y-%m-%d %H:%M:%S');
+    foreach ($matches[1] as $match) {
+        if ( !isset($time_str[$match]) ) {
+            $event_time = strtotime($match);
+            $diff = strtotime($cur_time) - $event_time;
+            foreach ($ago as $sec => $text) {
+                if ( $diff < $sec ) {
+                    $time_str[$match] = $text;
+                    break;
+                }
+            }
+            if ( !isset($time_str[$match]) )
+                $time_str[$match] = $ago['-1'];
+        }
+
+    }
     $to_str = array(
         '南向' => '<span name="南向" class="to">南向</span>',
         '北向' => '<span name="北向" class="to">北向</span>',
         '東向' => '<span name="東向" class="to">東向</span>',
         '西向' => '<span name="西向" class="to">西向</span>');
-    /*$free_str = array(
-        '國道1號' => '<span class="國道1號" name="road">國道1號</span>',
-        '國道2號' => '<span class="國道2號" name="road">國道2號</span>',
-        '國道3號' => '<span class="國道3號" name="road">國道3號</span>',
-        '國道4號' => '<span class="國道4號" name="road">國道4號</span>',
-        '國道5號' => '<span class="國道5號" name="road">國道5號</span>',
-        '國道6號' => '<span class="國道6號" name="road">國道6號</span>',
-        '國道7號' => '<span class="國道7號" name="road">國道7號</span>',
-        '國道8號' => '<span class="國道8號" name="road">國道8號</span>',
-        '國道9號' => '<span class="國道9號" name="road">國道9號</span>',
-        '國道10號' => '<span class="國道10號" name="road">國道10號</span>',);*/
-    /*$inc_str = array(
-        '出口匝道壅塞' => '<span class="出口匝道壅塞" name="inc">出口匝道壅塞</span>',
-        '施工' => '<span class="施工" name="inc">施工</span>',
-        '散落物' => '<span class="散落物" name="inc">散落物</span>',
-        '>壅塞<' => '><span class="壅塞" name="inc">壅塞</span><');*/
-    /*$fast_str = array(
-        '汐五高架' => '<span class="汐五高架" name="road">汐五高架</span>',
-        '快速公路74號' => '<span class="快速公路74號" name="road">快速公路74號</span>',
-        '快速公路88號' => '<span class="快速公路88號" name="road">快速公路88號</span>');*/
 
     $replace_array = array(
         'to' => $to_str,
-        //'road' => array_merge($free_str, $fast_str),
         'road' => $road_str,
-        'inc' => $inc_replace_str);
+        'inc' => $inc_replace_str,
+        'time' => $time_str);
 
     foreach ($replace_array as $key => $replace_str) {
         foreach ($replace_str as $str => $replace) {
@@ -87,6 +94,7 @@
     }
     echo $doc->saveHTML();*/
 ?>
+    </tbody>
 </table>
 <?php 
     $replace_array['inc'] = $inc_str;

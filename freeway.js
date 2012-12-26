@@ -17,12 +17,12 @@
         num_button = button.length;
 
         for ( var i = 0; i < num_select; i++ ) {
-            document.getElementById('select').appendChild(select[0]);
+            document.getElementById('div-select').appendChild(select[0]);
         }
         for ( var i = 0; i < num_button; i++) {
-            document.getElementById('select').appendChild(button[0]);
+            document.getElementById('div-select').appendChild(button[0]);
         }
-        show('reset');
+
         if ( document.body.addEventListener ) {
             document.getElementById('button_reset').addEventListener("click", function(){show('reset', null);}, false);
             document.getElementById('button_search').addEventListener("click", function(){show('filter', null);}, false);

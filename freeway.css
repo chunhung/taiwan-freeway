@@ -38,6 +38,11 @@ div.pos_left{
   left:5;
 }
 
+div.event{
+  display:block;
+  position:relative;
+}
+
 span.pos_button{
   display:block;
   font-size:120%;
@@ -70,7 +75,7 @@ span.area{
 }
 
 .table-incident{
-  position:center;
+  display:block;
 }
 
 .show{
@@ -97,4 +102,8 @@ span.inc{
   text-align:center;
   display:block;
   background-color:#c0aac0;
+}
+
+td {
+  padding: 5px 5px 10px 10px;
 }
