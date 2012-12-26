@@ -98,6 +98,7 @@
 </table>
 <?php 
     $replace_array['inc'] = $inc_str;
+    unset($replace_array['time']);
     foreach ( $replace_array as $type => $name ) {
         echo '<select id="select_'.$type.'" css="select_'.$type.'">';
         echo '<option value="全部">全部</option>';
