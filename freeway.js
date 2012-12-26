@@ -86,8 +86,32 @@
         }
     }
 
+    function change_incident_display(to, road, inc) {
+        var tbody = document.getElementsByTagName('tbody');
+        var tr = tbody[0].getElementsByTagName('tr');
+
+        for ( var i = 0; i < tr.length; i++ ) {
+            var status = 'show';
+            var spans = tr[i].getElementsByTagName('span');
+            for ( var j = 0; j < spans.length; j++ ) {
+                var span_class = spans[j].getAttribute('class');
+                var span_name = spans[j].getAttribute('Name');
+                if ( to != '全部' && span_name == 'to' && status == 'show' )
+                    status = ( span_class == to )?'show':'hide';
+                if ( road != '全部' && span_name == 'road' && status == 'show' )
+                    status = ( span_class == road )?'show':'hide';
+                if ( inc != '全部' && span_name == 'inc' && status == 'show' )
+                    status = ( span_class == inc )?'show':'hide';
+                tr[i].setAttribute('class', status);
+            }
+        }
+        document.getElementById('button_search').disabled = true;
+    }
+
     function show(type) {
         if ( type == 'reset' ) {
+            change_incident_display('全部', '全部', '全部');
+            /*
             var tbody = document.getElementsByTagName('tbody');
             var tr = tbody[0].getElementsByTagName('tr');
             for ( var i = 0; i < tr.length; i++ ) {
@@ -102,7 +126,7 @@
                 } else {
                     tr[i].setAttribute('class', 'show');
                 }
-            }
+            }*/
             document.getElementById('select_to').value='全部';
             document.getElementById('select_road').value='全部';
             document.getElementById('select_inc').value='全部';
@@ -112,6 +136,8 @@
             var road = document.getElementById('select_road').value;
             var inc = document.getElementById('select_inc').value;
 
+            change_incident_display(to, road, inc);
+            /*
             var tbody = document.getElementsByTagName('tbody');
             var tr = tbody[0].getElementsByTagName('tr');
             for ( var i = 0; i < tr.length; i++ ) {
@@ -129,7 +155,7 @@
                     tr[i].setAttribute('class', status);
                 }
             }
-            document.getElementById('button_search').disabled = true;
+            document.getElementById('button_search').disabled = true;*/
         }
     }
 
